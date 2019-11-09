@@ -1,5 +1,7 @@
 # Spark Kafka Streaming Application
 
+
+![FLOW_DIAGRAM](https://github.com/ashshetty90/spark-kafka-application/blob/master/images/flow-diagram.jpg "FLOW_DIAGRAM")
 # Overview:
 This project is a pub sub based application written in python to publish data using Kafka and consume/aggregate data using the Spark processing framework.
 
@@ -31,6 +33,8 @@ The Architecture involves the following tech stack.
 $ docker-compose up -d
 ### The above command will run the kafka producer inside a docker container and will expose it at `localhost:9093`
 
+
+2) Running the Spark Streaming Consumer Application
 ### Please note that this set-up is valid only for Mac OS machines
 
 ### Firstly, make sure you have installed home brew on your local machine . If not please use the below command to install it:
@@ -70,3 +74,10 @@ For Ex:
 $ /usr/local/Cellar/apache-spark/2.4.4/bin/spark-submit --driver-memory 4G --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0   --py-files /User/Workspace/app/driver.py /User/Workspace/app/driver.py
 
 ```
+
+# Screenshots
+### Sample Outputs
+![KAFKA PRODUCER](https://github.com/ashshetty90/spark-kafka-application/blob/master/images/kafka-producer.png "KAFKA PRODUCER")
+
+![SPARK CONSUMER](https://github.com/ashshetty90/spark-kafka-application/blob/master/images/output.png "SPARK CONSUMER")
+
