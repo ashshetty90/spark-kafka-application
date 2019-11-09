@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e306df0-6eec-45f4-ab9f-49efc13bc99d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/kafka-producer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1e306df0-6eec-45f4-ab9f-49efc13bc99d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +115,7 @@
       <updated>1572725177833</updated>
       <workItem from="1572725178924" duration="522000" />
       <workItem from="1572726029866" duration="51148000" />
-      <workItem from="1573130136366" duration="34553000" />
+      <workItem from="1573130136366" duration="35040000" />
     </task>
     <servers />
   </component>
