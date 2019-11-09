@@ -1,0 +1,155 @@
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9093:9093"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: INTERNAL://:9092,EXTERNAL://:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CREATE_TOPICS: "data-stream-analysis:1:1"
+    extra_hosts:
+        - "localhost: 127.0.0.1"
+
+  producer:
+    image: ashshetty/kafka-stream-analytics:latest
+    build: producer/.
+    ports:
+      - "8282:80"
+
+#  graphite:
+#    build: graphite
+#    restart: always
+#    ports:
+#      - "8000:8000"
+#      - "2003:2003"
+#      - "2004:2004"
+#    volumes:
+#      - "/data/graphite:/opt/graphite/storage/whisper"
+#
+#  statsd:
+#    build: statsd
+#    restart: always
+#    ports:
+#      - "8125:8125/udp"
+#      - "8126:8126"
+#    volumes:
+#      - "/data/statsd:/etc/statsd"
+#    links:
+#      - graphite
+#
+#  grafana:
+#    image: grafana/grafana
+#    restart: always
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - "/data/grafana:/var/lib/grafana"
+#    links:
+#      - graphite
+#    environment:
+#      - GF_SECURITY_ADMIN_PASSWORD=admin
+#  grafana_graphite:
+#    image: kamon/grafana_graphite
+#    container_name: kamon-grafana-dashboard
+#    ports:
+#      - '80:80'
+#      - '81:81'
+#      - '8125:8125/udp'
+#      - '8126:8126'
+#      - '2003:2003'
+#    volumes:
+#      - ./data/whisper:/opt/graphite/storage/whisper
+#      - ./data/grafana:/opt/grafana/data
+#      - ./log/graphite:/opt/graphite/storage/log
+#      - ./log/supervisor:/var/log/supervisor
+
+#  consumer:
+#    image: ashshetty/kafka-stream-analytics:latest
+#    build: .
+#    ports:
+#      - "8283:80"
+#  Create a service named db.
+#  db:
+##   Use the Docker Image postgres. This will pull the newest release.
+#    image: "postgres"
+##   Give the container the name my_postgres. You can changes to something else.
+#    container_name: "my_postgres"
+##   Setup the username, password, and database name. You can changes these values.
+#    environment:
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#      - POSTGRES_DB=mydb
+##   Maps port 54320 (localhost) to port 5432 on the container. You can change the ports to fix your needs.
+#    ports:
+#      - "54320:5432"
+##   Set a volume some that database is not lost after shutting down the container.
+##   I used the name postgres-data but you can changed it to something else.
+#    volumes:
+#      - ./postgres-data:/var/lib/postgresql/data
+#  db:
+#      image: mysql
+#      command: --default-authentication-plugin=mysql_native_password
+#      restart: always
+#      environment:
+#        MYSQL_ROOT_PASSWORD: admin
+#
+#  adminer:
+#        image: adminer
+#        restart: always
+#        ports:
+#          - 8080:8080
+#  spark-master:
+#    image: bde2020/spark-master:2.4.4-hadoop2.7
+#    container_name: spark-master
+#    depends_on:
+#      - kafka
+#      - producer
+#    ports:
+#      - "8080:8080"
+#      - "7077:7077"
+#    environment:
+#      - "constraint:node==localhost"
+#  spark-worker-1:
+#    image: bde2020/spark-worker:2.4.4-hadoop2.7
+#    container_name: spark-worker-1
+#    depends_on:
+#      - spark-master
+#      - kafka
+#      - producer
+#    ports:
+#      - "8082:8082"
+#    environment:
+#      - "SPARK_MASTER=spark://spark-master:7077"
+#      - "constraint:node==localhost"
+#  spark-worker-2:
+#    image: bde2020/spark-worker:2.4.4-hadoop2.7
+#    container_name: spark-worker-2
+#    depends_on:
+#      - spark-master
+#      - kafka
+#      - producer
+#    ports:
+#      - "8083:8082"
+#    environment:
+#      - "SPARK_MASTER=spark://spark-master:7077"
+#      - "constraint:node==localhost"
+#  spark-consumer:
+#    image: ashshetty/spark-stream-consumer:latest
+#    build: spark-consumer/.
+#    depends_on:
+#      - spark-master
+#      - spark-worker-1
+#      - spark-worker-2
+#      - kafka
+#      - producer
+#    ports:
+#      - "8084:80"
+
