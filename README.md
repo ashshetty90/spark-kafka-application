@@ -21,7 +21,7 @@ The Architecture involves the following tech stack.
 
 1) Dockerise the Spark application.
 2) Push the data into a persistant storage like InfluxDB/MySQl/PostGres.
-3) Stream real time aggregations from persistant storage systems into dashboards built in Kibana or Grafana.
+3) Stream real time aggregations from persistant storage systems into dashboards built in Grafana.
 
 
 # How to run this application
