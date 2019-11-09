@@ -24,7 +24,13 @@ The Architecture involves the following tech stack.
 
 # How to run this application
 ```sh
-### Clone the repository [https://github.com/ashshetty90/shazam-tag-aggregator.git]
+### Clone the repository [https://github.com/ashshetty90/spark-kafka-application.git]
+
+1) Running the Kafka Producer 
+### After cloning the repository, run the below command in the root directory of the project. Make sure docker is installed on your machine.
+$ docker-compose up -d
+### The above command will run the kafka producer inside a docker container and will expose it at `localhost:9093`
+
 ### Please note that this set-up is valid only for Mac OS machines
 
 ### Firstly, make sure you have installed home brew on your local machine . If not please use the below command to install it:
