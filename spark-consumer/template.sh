@@ -1,1 +1,0 @@
-spark-submit --driver-memory 4G --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 --py-files spark-consumer/driver.py spark-consumer/driver.py
