@@ -27,10 +27,17 @@ The Architecture involves the following tech stack.
 ```sh
 ### Clone the repository [https://github.com/ashshetty90/spark-kafka-application.git]
 
-Running the Kafka Producer 
 ### After cloning the repository, run the below command in the root directory of the project. Make sure docker is installed on your machine.
 $ docker-compose up -d
 ### The above command will run the kafka producer and the spark consumer inside a docker container.
+
+$ docker container ps 
+
+### This would show all the currently running containers inside docker
+
+$ docker logs <container_id>
+
+The logs for each of the container can be seen by running the above command
 
 ```
 
