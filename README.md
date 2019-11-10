@@ -1,7 +1,7 @@
 # Spark Kafka Streaming Application
 
 
-![FLOW_DIAGRAM](https://github.com/ashshetty90/spark-kafka-application/blob/master/images/flow-diagram.jpg "FLOW_DIAGRAM")
+![FLOW_DIAGRAM](https://github.com/ashshetty90/spark-kafka-application/blob/master/images/flow-diagram.png "FLOW_DIAGRAM")
 # Overview:
 This project is a dockerised pub sub based application written in python to publish data using Kafka and consume/aggregate data using the Spark processing framework.
 
