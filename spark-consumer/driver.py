@@ -20,7 +20,7 @@ def get_raw_df(spark, schema, alias_value):
     return spark \
         .readStream \
         .format("kafka") \
-        .option("kafka.bootstrap.servers", "localhost:9093") \
+        .option("kafka.bootstrap.servers", "kafka:9092") \
         .option("subscribe", "data-stream-analysis") \
         .option("startingOffsets", "earliest") \
         .option("spark.streaming.backpressure.enabled", True) \

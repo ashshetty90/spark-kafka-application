@@ -15,7 +15,7 @@ class Broadcaster:
         Initial set up for the Kafka Producer
         """
         logger = logging.getLogger()
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.INFO)
         self.logger = logger
 
         while not hasattr(self, 'producer'):
@@ -31,7 +31,7 @@ class Broadcaster:
         :param message: pushing messages to the kafka topics
         :return: None
         """
-        self.logger.debug("Publishing: {0}".format(message))
+        self.logger.info("Publishing: {0}".format(message))
         try:
             if self.producer:
                 self.producer.send(topic,
