@@ -19,7 +19,7 @@ services:
         - "localhost: 127.0.0.1"
 
   producer:
-    image: ashshetty/kafka-stream-analytics:latest
+    image: ashshetty90/kafka-producer:latest
     build: producer/.
     ports:
       - "8282:80"
@@ -142,7 +142,7 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "constraint:node==localhost"
   spark-consumer:
-    image: ashshetty/spark-stream-consumer:latest
+    image: ashshetty90/spark-stream-consumer:latest
     build: spark-consumer/.
     depends_on:
       - spark-master
